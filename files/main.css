@@ -1,0 +1,13 @@
+a {
+    color:yellow;
+}
+a:hover {
+    color:white;
+}
+#divState {
+    background-color: #18404F; color: white; font-family: consolas; font-size:12px;
+        padding: 4px
+}
+.hidden {
+    display: none;
+}
