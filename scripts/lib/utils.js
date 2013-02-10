@@ -40,15 +40,18 @@ function ReadFile(filename){
     f.close();
     return res;
 }
-function WriteFile(filename, data, append){
+function WriteFile(filename, data, append, unicode){
     if(!append){
         append = 2;
     }else{
         append = 8;
     }
+    if(!unicode){
+        unicode = true;
+    }
     var aX = new ActiveXObject("Scripting.FileSystemObject");
     // var f = aX.createTextFile(System.Gadget.path + "\\" + filename, true);
-    var f = aX.openTextFile(System.Gadget.path + "\\" + filename, append, true, true);
+    var f = aX.openTextFile(System.Gadget.path + "\\" + filename, append, true, unicode);
     f.write(data);
     f.close();
 }

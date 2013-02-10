@@ -88,6 +88,10 @@ var update_timetable = function(){
     });
 }
 
+var show_entire_timetable = function(){
+    ShellExecute("timetable.hta");
+}
+
 var delete_cache = function(){
     EmptyFile("table.json");
     EmptyFile("checksum.md5");

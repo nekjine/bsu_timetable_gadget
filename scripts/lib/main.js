@@ -28,6 +28,7 @@ app.update = function(fn){
         var new_table = self.parseData(trimmedData);
         self.timetable = new_table;
         self.saveTBL(new_table);
+        self.saveTBLpage(new_table);
         self.saveChecksum(new_sum);
         if(old_table != null){
             self.analyzeDiffs( old_table, new_table );
@@ -75,6 +76,23 @@ app.loadTBL = function(){
 
 app.saveTBL = function(tbl){
     WriteFile("table.json", JSON.stringify(tbl.getRawTable()));
+}
+
+app.saveTBLpage = function(tbl){
+    var str = '<!doctype html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><link rel="stylesheet" href="file:///C:/Users/Whirpool/AppData/Local/Microsoft/Windows%20Sidebar/Gadgets/timetable.gadget/files/main.css" /></head><body>';
+
+    for(var week=0; week<2; ++week){
+        for(var day=0; day<6; ++day){
+            str += '<table id="main" class="main" cellspacing="0" cellpadding="0"><tr style="height:30px"><td class="s t"><div id="today" class="header_day">'+GetDayStr(day)+'</div> <div id="today_week" class="header_week">'+(week+1)+'</div> </td> </tr><tr><td class="s"><table id="subjs_left" class="subjects" align="center">'
+            var subjs = tbl.fetch(week, day);
+            for(var i=0; i<subjs.length; ++i){
+                str += '<tr><td class="col_time"><div class="time">'+subjs[i].time+'</div></td><td class="col"><div class="room">'+subjs[i].classroom+'</div><div class="type">'+subjs[i].type+'</div></td><td class="col"><div class="subj">'+subjs[i].subject+'</div><div class="teach">'+subjs[i].teacher+'</div></td></tr>'
+            }
+            str += '</table></td></tr></table>'
+        }
+    }
+    str += "</body></html>";
+    WriteFile("timetable.hta", str, false, false);
 }
 
 function logForDay(week, day, oldt, newt){
