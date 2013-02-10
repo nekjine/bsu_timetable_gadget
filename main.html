@@ -1,14 +1,80 @@
+<!-- Quirks mode
+     Lasciate ogni speranza voi ch'entrate
+-->
 <html>
 <head>
-    <script type="text/javascript" src="scripts/lib/gadget.js"></script>
-    <script type="text/javascript" src="scripts/main.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript" src="scripts/lib/json2.js"></script>
+    <script type="text/javascript" src="scripts/lib/md5.js"></script>
+    <script type="text/javascript" src="scripts/lib/utils.js"></script>
+    <script type="text/javascript" src="scripts/lib/main.js"></script>
+    <script type="text/javascript" src="scripts/gadget.js"></script>
     <link rel="stylesheet" href="files/main.css" />
 </head>
 <body>
     <g:background id="imgBackground" src="files/bg.png">
-        <div id="divState" style=""><a onmousedown="hideMouseDown()" href="#">[hide]</a> <span id="spanState"></span></div>
-        <button id="btnSync" class="hidden"></button>
-        <button id="btnSyncUpd" class="hidden"></button>
+    <div id="console" style="position:absolute; left:5px; top:5px"></div>
+    <img id="settings_icon" src="files/settings_transparent.png" class="settings pointable" title="Enter the control area"/>
+
+    <table id="main" class="main" cellspacing="0" cellpadding="0">
+        <tr style="height:30px">
+            <td class="s t">
+                <div id="today" class="header_day">hea@</div>
+                <div id="today_week" class="header_week"></div>
+            </td>
+            <td class="s t">
+                <div id="tomorrow" class="header_day">hea@</div>
+                <div id="tomorrow_week" class="header_week"></div>
+            </td>
+        </tr>
+        <tr>
+            <td class="s">
+                <table id="subjs_left" class="subjects" align="center">
+                </table>
+            </td>
+            <td class="s">
+                <table id="subjs_right" class="subjects" align="center">
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <table id="alter" class="main hidden" cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="r">
+                <div class="ribbon">
+                    <span class="button" onmouseover="bt_alter(this, 1)" onmouseout="bt_alter(this)" onclick="update_timetable()">
+                        Обновить расписание
+                    </span>
+                    <span class="button" onmouseover="bt_alter(this, 1)" onmouseout="bt_alter(this)">
+                        Расписание на неделю
+                    </span>
+                    <span class="button" onmouseover="bt_alter(this, 1)" onmouseout="bt_alter(this)" onclick="show_log()">
+                        Показать журнал
+                    </span>
+                    <span class="button" onmouseover="bt_alter(this, 1)" onmouseout="bt_alter(this)" onclick="delete_log()">
+                        Очистить журнал
+                    </span>
+                    <span class="button" onmouseover="bt_alter(this, 1)" onmouseout="bt_alter(this)" onclick="delete_cache()">
+                        Очистить кэш
+                    </span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="r">
+                <div class="info">
+                    <span class="cat">
+                        Last update:
+                    </span>
+                    <span id="last_update" class="descr">
+                        today
+                    </span>
+                </div>
+            </td>
+        </tr>
+    </table>
+
     </g:background>
 </body>
 </html>

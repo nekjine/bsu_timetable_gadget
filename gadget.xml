@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <gadget>
-  <name>DBG: Расписание для 05290</name>
-  <version>1.1</version>
+  <name>DEPLOY: Расписание для 05290</name>
+  <version>1.2</version>
   <description>Есть возможность обновления через интернет напрямую с bsu.ru</description>
   <author name="nekjine">
-    <info url="http://vk.com/nekjine" text="whoami" />
+    <info url="https://github.com/nekjine/bsu_timetable_gadget" text="GitHub" />
     <logo src="files/logo.png" />
   </author>
-  <copyright>(c) 2012</copyright>
+  <copyright>(c) 2013</copyright>
   <hosts>
     <host name="sidebar">
       <base type="HTML" apiVersion="1.0.0" src="main.html" />
