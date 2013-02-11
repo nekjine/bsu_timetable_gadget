@@ -90,7 +90,7 @@ div.classroom {
 div.type {
     width: 30px;
     color: #9f9f9f;
-    font-size: 0.8em;
+    font-size: 1em;
 }
 div.sbj {
     color: #00b4ff;
@@ -99,7 +99,7 @@ div.sbj {
 }
 div.teacher {
     color: #9f9f9f;
-    font-size: 0.8em;
+    font-size: 1em;
 }
 /*
 
