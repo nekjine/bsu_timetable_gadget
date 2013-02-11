@@ -19,14 +19,14 @@ $(function(){
             alter_vis = true;
             icon = "ok";
             $("settings_icon").setAttribute("src", "files/"+icon+".png");
-            $("settings_icon").setAttribute("title", "Leave the control area");
+            $("settings_icon").setAttribute("title", "Назад");
         }else{
             $("main").style.display = "";
             $("alter").style.display = "none";
             alter_vis = false;
             icon = "settings";
             $("settings_icon").setAttribute("src", "files/"+icon+".png");
-            $("settings_icon").setAttribute("title", "Enter the control area");
+            $("settings_icon").setAttribute("title", "Управление");
         }
     }
 

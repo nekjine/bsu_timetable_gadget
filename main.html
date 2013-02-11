@@ -14,7 +14,7 @@
 <body>
     <g:background id="imgBackground" src="files/bg.png">
     <div id="console" style="position:absolute; left:5px; top:5px"></div>
-    <img id="settings_icon" src="files/settings_.png" class="settings pointable" title="Enter the control area"/>
+    <img id="settings_icon" src="files/settings_.png" class="settings pointable" title="Управление"/>
 
     <table id="main" class="main" cellspacing="0" cellpadding="0">
         <tr style="height:30px">
@@ -43,19 +43,19 @@
         <tr>
             <td class="r">
                 <div class="ribbon">
-                    <span class="button" onmouseover="bt_alter(this, 1)" onmouseout="bt_alter(this)" onclick="update_timetable()">
+                    <span class="button" onmouseover="bt_alter(this, 1)" onmouseout="bt_alter(this)" onclick="update_timetable()" title="Обновить расписание с bsu.ru">
                         Обновить расписание
                     </span>
-                    <span class="button" onmouseover="bt_alter(this, 1)" onmouseout="bt_alter(this)" onclick="show_entire_timetable()">
-                        Расписание на неделю
+                    <span class="button" onmouseover="bt_alter(this, 1)" onmouseout="bt_alter(this)" onclick="show_entire_timetable()" title="Посмотреть полное сохранённое расписание">
+                        Полное расписание
                     </span>
-                    <span class="button" onmouseover="bt_alter(this, 1)" onmouseout="bt_alter(this)" onclick="show_log()">
-                        Показать журнал
+                    <span class="button" onmouseover="bt_alter(this, 1)" onmouseout="bt_alter(this)" onclick="show_log()" title="Показать журнал обновлений">
+                        Журнал обновлений
                     </span>
-                    <span class="button" onmouseover="bt_alter(this, 1)" onmouseout="bt_alter(this)" onclick="delete_log()">
+                    <span class="button" onmouseover="bt_alter(this, 1)" onmouseout="bt_alter(this)" onclick="delete_log()" title="Очистить журнал обновлений">
                         Очистить журнал
                     </span>
-                    <span class="button" onmouseover="bt_alter(this, 1)" onmouseout="bt_alter(this)" onclick="delete_cache()">
+                    <span class="button" onmouseover="bt_alter(this, 1)" onmouseout="bt_alter(this)" onclick="delete_cache()" title="Удалить сохранённое расписание">
                         Очистить кэш
                     </span>
                 </div>
