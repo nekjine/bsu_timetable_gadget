@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <gadget>
-  <name>DEPLOY: Расписание для 05290</name>
-  <version>1.2</version>
+  <name>Расписание для 05290</name>
+  <version>2.0</version>
   <description>Есть возможность обновления через интернет напрямую с bsu.ru</description>
   <author name="nekjine">
     <info url="https://github.com/nekjine/bsu_timetable_gadget" text="GitHub" />
