@@ -192,6 +192,7 @@ var refresh_timetable = function(now){
 
         var ttable = app.getTBL();
         if(ttable == null){
+            $show("Нет сохранённого расписания")
             return;
         }
         $("today").innerText = GetDayStr(day_td);
