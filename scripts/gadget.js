@@ -54,7 +54,9 @@ $(function(){
     /*
         
     */
-    update_timetable();
+    setTimeout(function(){
+        update_timetable();
+    }, 10000)
     refresh_last_update();
 });
 
@@ -81,15 +83,16 @@ var update_timetable = function(){
     app.update(function(err, result){
         if(err){
             $show("Ошибка обновления");
-        }
-        if(result == 1){
-            // updated
-            $show("Расписание обновлено");
-            refresh_timetable();
-            $set("last_update", GetDateStr());
-            refresh_last_update();
         }else{
-            $show("Обновление не требуется");
+            if(result == 1){
+                // updated
+                $show("Расписание обновлено");
+                refresh_timetable();
+                $set("last_update", GetDateStr());
+                refresh_last_update();
+            }else{
+                $show("Обновление не требуется");
+            }
         }
     });
 }

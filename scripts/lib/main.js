@@ -142,7 +142,7 @@ app.loadData = function(fn){
             if(req.status == 200){
                 fn(null, req.responseText);
             }else{
-                fn(error);
+                fn(true);
             }
         }
     }
