@@ -21,7 +21,7 @@ function ObjEqual(obj1, obj2){
 }
 function GetDateStr(){
     var d = new Date;
-    return d.getDate() + "." + (d.getMonth()+1) + "." + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes();
+    return d.getDate() + "." + (d.getMonth()+1) + "." + d.getFullYear() + " " + d.getHours() + ":" + (d.getMinutes()<10?"0"+d.getMinutes():d.getMinutes());
 }
 function GetDayStr(dayNum){
     return ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"][dayNum];
