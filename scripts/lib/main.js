@@ -59,11 +59,13 @@ app.getTBL = function(){
 */
 
 app.loadChecksum = function(){
-    return ReadFile("checksum.md5");
+    // return ReadFile("checksum.md5");
+    return $get("checksum");
 }
 
 app.saveChecksum = function(newSum){
-    WriteFile("checksum.md5", newSum);
+    // WriteFile("checksum.md5", newSum);
+    $set("checksum", newSum);
 }
 
 app.loadTBL = function(){
@@ -79,20 +81,24 @@ app.saveTBL = function(tbl){
 }
 
 app.saveTBLpage = function(tbl){
-    var str = '<!doctype html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><link rel="stylesheet" href="file:///C:/Users/Whirpool/AppData/Local/Microsoft/Windows%20Sidebar/Gadgets/timetable.gadget/files/main.css" /></head><body>';
+    var str = '<!doctype html><html><head><title>Расписание</title><meta http-equiv="Content-Type" content="text/html; charset=utf-16"><link rel="stylesheet" href="files/timetable.css" /></head><body>\r\n';
 
     for(var week=0; week<2; ++week){
+        str += "<div class='week'>"+(week+1)+" неделя</div>\r\n";
         for(var day=0; day<6; ++day){
-            str += '<table id="main" class="main" cellspacing="0" cellpadding="0"><tr style="height:30px"><td class="s t"><div id="today" class="header_day">'+GetDayStr(day)+'</div> <div id="today_week" class="header_week">'+(week+1)+'</div> </td> </tr><tr><td class="s"><table id="subjs_left" class="subjects" align="center">'
             var subjs = tbl.fetch(week, day);
-            for(var i=0; i<subjs.length; ++i){
-                str += '<tr><td class="col_time"><div class="time">'+subjs[i].time+'</div></td><td class="col"><div class="room">'+subjs[i].classroom+'</div><div class="type">'+subjs[i].type+'</div></td><td class="col"><div class="subj">'+subjs[i].subject+'</div><div class="teach">'+subjs[i].teacher+'</div></td></tr>'
+            if(subjs.length == 0){
+                continue;
             }
-            str += '</table></td></tr></table>'
+            str += '<table class="main" cellspacing="4" cellpadding="0" align="center"><tr><th colspan="3">'+GetDayStr(day)+'</th></tr>'
+            for(var i=0; i<subjs.length; ++i){
+                str += '<tr><td class="fixed"><div class="time">'+subjs[i].time+'</div></td><td class="fixed"><div class="room">'+subjs[i].classroom+'</div><div class="type">'+subjs[i].type+'</div></td><td><div class="subj">'+subjs[i].subject+'</div><div class="teach">'+subjs[i].teacher+'</div></td></tr>'
+            }
+            str += '</table><br />'
         }
     }
     str += "</body></html>";
-    WriteFile("timetable.hta", str, false, false);
+    WriteFile("timetable.htm", str, false, false);
 }
 
 function logForDay(week, day, oldt, newt){

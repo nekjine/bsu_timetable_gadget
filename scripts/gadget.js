@@ -1,7 +1,7 @@
 $(function(){
     $show("Инициализация...");
-    document.body.style.width = 700;
-    document.body.style.height = 240;
+    document.body.style.width = 600;
+    document.body.style.height = 300;
     document.body.style.padding = 0;
 
     var icon = "settings";
@@ -55,6 +55,7 @@ $(function(){
         
     */
     update_timetable();
+    refresh_last_update();
 });
 
 /*
@@ -69,7 +70,10 @@ var bt_alter = function(element, alt){
 }
 
 var show_log = function(){
-    ShellExecute("log.txt");
+    if(FileExists("log.txt"))
+        ShellExecute("log.txt");
+    else
+        $show("Журнал пуст")
 }
 
 var update_timetable = function(){
@@ -82,6 +86,8 @@ var update_timetable = function(){
             // updated
             $show("Расписание обновлено");
             refresh_timetable();
+            $set("last_update", GetDateStr());
+            refresh_last_update();
         }else{
             $show("Обновление не требуется");
         }
@@ -89,7 +95,7 @@ var update_timetable = function(){
 }
 
 var show_entire_timetable = function(){
-    ShellExecute("timetable.hta");
+    ShellExecute("timetable.htm");
 }
 
 var delete_cache = function(){
@@ -106,6 +112,19 @@ var delete_log = function(){
     Stuff
 */
 var add_subjects = function(table, TBLSubject){
+    if(TBLSubject.length == 0){
+        var tbody = document.createElement("tbody");
+        var tr = document.createElement("tr");
+        var td = document.createElement("td");
+        var div = document.createElement("div");
+        div.className = "no_subjects";
+        div.innerText = "Нет пар";
+        td.appendChild(div);
+        tr.appendChild(td);
+        tbody.appendChild(tr);
+        table.appendChild(tbody);
+        return;
+    }
     for(var i=0; i<TBLSubject.length; ++i){
         var tbody = document.createElement("tbody");
         var tr = document.createElement("tr");
@@ -148,6 +167,12 @@ var remove_all_subjects = function(table){
         while (table.childNodes.length >= 1){
             table.removeChild(table.firstChild);       
         } 
+    }
+}
+
+var refresh_last_update = function(){
+    if($get("last_update")){
+        $("last_update").innerText = $get("last_update");
     }
 }
 

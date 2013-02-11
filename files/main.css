@@ -38,7 +38,11 @@ div.header_week {
     text-align: center;
     color: #9f9f9f;
 }
-
+div.no_subjects {
+    color: white;
+    font-size: 1.1em;
+    font-style: italic;
+}
 img.settings {
     position: absolute;
     bottom: 10px;
